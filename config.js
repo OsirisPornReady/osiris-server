@@ -6,7 +6,8 @@ var config = {
       port: 5000
     },
     user:'user',
-  }
+  },
+  lastUser:null,
 }
 
 module.exports = config;

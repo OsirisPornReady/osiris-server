@@ -28,6 +28,20 @@ var user = {
         let data = req.body;
         requestToApi.post(req,res,path,data);
     },
+    setLastUser:(req,res,next) => {
+        let query = req.query;
+        let queryStr = '';
+        let path = `${config.api.user}/login`;
+        let data = req.body;
+        config.lastUser = data; //express应用了json解析器，不需要parse
+        res.end();
+    },
+    getLastUser:(req,res,next) => {
+        let query = req.query;
+        let queryStr = '';
+        let path = `${config.api.user}/login`;
+        res.send(config.lastUser);
+    },
 }
 
 module.exports = user;
