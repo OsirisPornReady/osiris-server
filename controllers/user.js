@@ -24,7 +24,7 @@ var user = {
     login:(req,res,next) => {
         let query = req.query;
         let queryStr = '';
-        let path = `${config.api.user}/login`;
+        let path = `/${config.api.user}/login`;
         let data = req.body;
         requestToApi.post(req,res,path,data);
     },
