@@ -8,15 +8,19 @@ var fs = require('fs')
 //   res.send('respond with a resource');
 // });
 
+//require()是运行时载入，import是编译时载入，此处require()写在函数中没什么问题
+
 function getControllerFunc() {
   var controllers = {},
       rootPath = path.resolve(__dirname,'..'); //cd到当前目录，cd到上一级
 
   var traverseController = function (rootPath,filePath) {
-    var files = fs.readdirSync(rootPath + filePath);
+    // console.log(rootPath + filePath)
+    //其实可以先用个 const nowPath = rootPath + filePath来保存一下，这样看着太费劲了
+    var files = fs.readdirSync(rootPath + filePath); //读取文件夹中的所有文件列表，readdir方法只读一层
     for (let i = 0; i < files.length; i++) { //深度优先遍历所有的controller
-      var stat = fs.statSync(rootPath + filePath + '/' + files[i])
-      if (stat.isDirectory()) {
+      var stat = fs.statSync(rootPath + filePath + '/' + files[i]) //显示文件系统的一般详细信息。
+      if (stat.isDirectory()) { //如果是文件夹则继续遍历
         traverseController(rootPath,filePath + '/' + files[i]);
       } else {
         let extname = path.extname(files[i]) //返回文件的扩展名
@@ -25,11 +29,15 @@ function getControllerFunc() {
       }
     }
   }
-  traverseController(rootPath,'/controllers')
+  traverseController(rootPath,'/controllers') // /controllers_websocket
   return controllers
 }
 
 var controllers = getControllerFunc();
+// for (let k in controllers) {
+//   console.log(typeof k)
+// }
+// console.log(controllers)
 
 
 router.get('/:ctrl/:func',(req,res,next) => {  //冒号表示将ctrl作为参数，controller是保留字段不能用
