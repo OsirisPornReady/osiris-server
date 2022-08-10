@@ -2,9 +2,11 @@ var express = require('express');
 var WebRouter = require('./router')
 var config = require('./config')
 var expressWs = require('express-ws')
+var path = require('path')
 
 var app = express();
 
+app.use(express.static(path.join(__dirname, 'public'))); //设置静态资源文件路径
 app.use(express.json()) //内置的json解析,不再需要安装body-parser
 expressWs(app);
 WebRouter(app)
