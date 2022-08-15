@@ -32,7 +32,8 @@ var requestToApi = {
         }).then((response) => {
             res.send(response.data);
         }).catch((error) => {
-            res.send(null);
+            // res.send(null);
+            res.status(500).send(error);
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
@@ -62,7 +63,8 @@ var requestToApi = {
         }).then((response) => {
             res.send(response.data);
         }).catch((error) => {
-            res.send(null);
+            // res.send(null); //最好不要直接返回空,空可能有其他含义,应该给一个错误状态码
+            res.status(500).send(error);
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx

@@ -6,6 +6,7 @@ var config = {
       port: 5000
     },
     user:'user',
+    video:'video',
   },
   lastUser:null,
 }
