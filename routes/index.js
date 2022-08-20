@@ -9,7 +9,7 @@ var router = express.Router();
 // });
 
 router.get('*', function(req, res, next) {
-  res.render('index');
+  res.render('index'); //view的名字就是html文件的名字,比如public下有个叫home.html那就res.render('home')
 });
 
 module.exports = router;
