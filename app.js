@@ -6,6 +6,9 @@ var path = require('path')
 
 var app = express();
 
+app.set('views', path.join(__dirname, 'public'));
+app.engine('.html', require('ejs').__express);
+app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, 'public'))); //设置静态资源文件路径
 app.use(express.json()) //内置的json解析,不再需要安装body-parser
 expressWs(app);
