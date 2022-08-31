@@ -47,6 +47,14 @@ var video = {
         requestToApi.post(req,res,path,data);
     },
 
+    swapVideoOrder:(req,res,next) => {
+        let query = req.query;
+        let queryStr = '';
+        let path = `/${config.api.video}/swapVideoOrder`;
+        let data = req.body;
+        requestToApi.post(req,res,path,data);
+    },
+
 }
 
 module.exports = video;

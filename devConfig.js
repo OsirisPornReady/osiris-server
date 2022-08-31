@@ -1,5 +1,5 @@
 var devConfig = {
-  debugMode: false,
+  debugMode: true,
 }
 
 module.exports = devConfig;
