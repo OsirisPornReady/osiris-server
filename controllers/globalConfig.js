@@ -1,8 +1,8 @@
 var requestToApi = require('../utility/requestToApi')
 var config = require('../config')
-var globalConfig = require('../globalConfig')
+var devConfig = require('../devConfig')
 
-var projectSetting = {
+var globalConfig = {
     get:(req,res,next) => {
         let query = req.query;
         let queryStr = '';
@@ -16,10 +16,10 @@ var projectSetting = {
         let data = req.body;
         requestToApi.post(req,res,path,data);
     },
-    getGlobalConfig:(req,res,next) => {
-        res.send(globalConfig);
+    getDevConfig:(req,res,next) => {
+        res.send(devConfig);
     },
 
 }
 
-module.exports = projectSetting;
+module.exports = globalConfig;
