@@ -7,14 +7,16 @@ var globalConfig = {
         let query = req.query;
         let queryStr = '';
         let path = `${config.api.globalConfig}/get`;
-        requestToApi.get(req,res,path);
+        let headers = req.headers;
+        requestToApi.get(req,res,path,headers);
     },
     post:(req,res,next) => {
         let query = req.query;
         let queryStr = '';
         let path = `${config.api.globalConfig}/post`;
+        let headers = req.headers;
         let data = req.body;
-        requestToApi.post(req,res,path,data);
+        requestToApi.post(req,res,path,headers,data);
     },
     getDevConfig:(req,res,next) => {
         res.send(devConfig);

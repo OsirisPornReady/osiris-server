@@ -1,0 +1,3 @@
+exports.authUser = function () {
+
+}

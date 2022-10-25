@@ -23,10 +23,11 @@ axios.defaults.timeout = 2500; //2.5 seconds
 
 
 var requestToApi = {
-    get: (req,res,path,params=null,responseType='json') => { //查
+    get: (req,res,path,headers,params=null,responseType='json') => { //查
         axios.request({ //等同于axios(),也可以直接get方法
             url: path,
             method: 'get',
+            headers: headers,
             params: params,
             responseType: responseType,
         }).then((response) => {
@@ -52,13 +53,13 @@ var requestToApi = {
             console.log(error.config);
         })
     },
-    post: (req,res,path,data,headers={ 'Content-Type': 'application/json' },params=null,responseType='json') => { //增
+    post: (req,res,path,headers,data,params=null,responseType='json') => { //增
         axios.request({ //等同于axios(),也可以直接post方法
             url: path,
             method: 'post',
             headers: headers,
-            params: params,
             data: data,
+            params: params,
             responseType: responseType,
         }).then((response) => {
             res.send(response.data);
@@ -124,4 +125,4 @@ var requestToApi = {
     // },
 }
 
-module.exports = requestToApi
+module.exports = requestToApi;

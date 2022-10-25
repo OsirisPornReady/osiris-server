@@ -7,6 +7,7 @@ var config = {
     },
     user:'user',
     video:'video',
+    globalConfig:'globalConfig',
   },
   lastUser:null,
 }
